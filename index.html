@@ -2,10 +2,94 @@
 <html>
 	<head>
 		<title>Sandwich Maker</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
+		<div id="wrapper">
+			<header>
+				<h2>You can't starve in the desert</h2>
+			</header>
 
-	<script type="text/javascript" src="javascripts/SandwichMaker.js"></script>
+			<div>
+				<form id="choose-ingredients">
+					<div id="choose-meat">
+						<label for="meat">Choose meat:</label><br>
+						<input type="checkbox" id="ham" name="meat" value="Ham">Ham<br>
+						<input type="checkbox" id="salami" name="meat" value="Salami">Salami<br>
+						<input type="checkbox" id="chicken" name="meat" value="Chicken">Chicken<br>
+						<input type="checkbox" id="turkey" name="meat" value="Turkey">Turkey<br>
+						<input type="checkbox" id="roast_beef" name="meat" value="Roast Beef">Roast Beef<br>
+						<input type="checkbox" id="steak" name="meat" value="steak">Steak<br>
+					</div>
+
+					<div id="choose-bread">
+						<label for="bread">Choose bread:</label><br>
+						<input type="checkbox" id="french" name="bread" value="French Bread">French<br>
+						<input type="checkbox" id="potato_roll" name="bread" value="Potato Roll">Potato Roll<br>
+						<input type="checkbox" id="focaccia" name="bread" value="Focaccia">Focaccia<br>
+						<input type="checkbox" id="sourdough" name="bread" value="Sourdough Bread">Sourdough<br>
+						<input type="checkbox" id="rye" name="bread" value="Rye Bread">Rye<br>
+
+					</div>
+
+					<div>
+						<label for="cheese">Choose cheese:</label><br>
+						<input type="checkbox" id="cheddar" name="cheese" value="Cheddar">Cheddar<br>
+						<input type="checkbox" id="swiss" name="cheese" value="Swiss">Swiss<br>
+						<input type="checkbox" id="provolone" name="cheese" value="Provolone">Provolone<br>
+						<input type="checkbox" id="pepper_jack" name="cheese" value="Pepper Jack">Pepper Jack<br>
+						<input type="checkbox" id="american" name="cheese" value="American cheese">American<br>
+					</div>
+									
+					<div>
+						<label for="veggies">Choose veggies:</label><br>
+						<input type="checkbox" id="lettuce" name="veggies" value="Lettuce">Lettuce<br>
+						<input type="checkbox" id="tomato" name="veggies" value="Tomato">Tomato<br>
+						<input type="checkbox" id="onion" name="veggies" value="Onion">Onion<br>
+						<input type="checkbox" id="sweet_peppers" name="veggies" value="Sweet Peppers">Sweet Peppers<br>
+						<input type="checkbox" id="jalapenos" name="veggies" value="Jalapenos">Jalapenos<br>
+
+					</div>
+
+					<div>
+					<label for="condiments">Choose condiments:</label><br>
+						<input type="checkbox" id="mayo" name="condiments" value="Mayo">Mayo<br>
+						<input type="checkbox" id="mustard" name="condiments" value="Mustard">Mustard<br>
+						<input type="checkbox" id="kumbak" name="condiments" value="Kumbak sauce">Kumbak<br>
+						<input type="checkbox" id="sriracha" name="condiments" value="Sriracha">Sriracha<br>
+						<input type="checkbox" id="oil_vinegar" name="condiments" value="Oil and Vinegar">Oil and Vinegar<br>
+						<input type="checkbox" id="spices" name="condiments" value="Spices">Spices<br>
+					</div>	
+
+
+				</form>
+
+				<div>
+					<button id="order-btn"onclick="orderSandwich(event)">Order Sandwich!</button>
+					<button id="new-order-btn" onclick= "clearInputs()">Create New Order</button>
+				</div>
+
+			</div>
+
+			<div id="sandwich-output">
+				<h2>Your Sandwich Order:</h2>
+				<div id="sandwich-details">
+				</div>
+				
+			</div>
+
+
+
+		</div>
+
+
+		<script type="text/javascript" src="javascripts/SandwichMaker.js"></script>
+		<script type="text/javascript" src="javascripts/Meat.js"></script>
+		<script type="text/javascript" src="javascripts/Bread.js"></script>
+		<script type="text/javascript" src="javascripts/Cheese.js"></script>
+		<script type="text/javascript" src="javascripts/Veggies.js"></script>
+		<script type="text/javascript" src="javascripts/Condiments.js"></script>
+		<script type="text/javascript" src="javascripts/DOMHandler.js"></script>
 	</body>
 </html>
 
