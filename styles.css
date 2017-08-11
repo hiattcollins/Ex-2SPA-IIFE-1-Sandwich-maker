@@ -1,3 +1,11 @@
+body {
+	font-family: Helvetica, sans-serif;
+}
+
+h2 {
+	margin-left: 2%;
+}
+
 #choose-ingredients {
 	display: flex;
 	flex-direction: row;
@@ -5,20 +13,25 @@
 
 #choose-ingredients div {
 	flex-grow: 1;
-	border: 1px solid green;
-	/*margin: 10px;*/
+	border: 1px solid black;
+	border-radius: 5px;
+
+	margin: 5px;
 	padding: 15px;
+	box-shadow: 5px 5px 5px #888888;
 }
 
 #sandwich-output {
-	border: 1px solid green;
 	min-height: 200px;
 }
 
-#sandwich-output h2 {
-	border: 1px solid green;
+#sandwich-output p {
+	margin-left: 2%;
 }
 
-#sandwich-details {
-	border: 1px solid green;
+button {
+	height: 25px;
+	margin: 20px 20px 0 20px;
+	border: 1px solid black;
+	border-radius: 3px;
 }

@@ -1,14 +1,10 @@
-console.log("DOMHandler.js");
+// console.log("DOMHandler.js");
 
-// Variable to hold the final price. Default to 0.
-// var finalSandwichPrice = 0;
-
-// Variable to hold topping that the user selects
+// ****** VARIABLE TO HOLD SELECTED SANDWICH INGREDIENTS TO PRINT ****** // 
 var selectedToppingsArray = [];
-// var ingredientList = "";
 
-// Get a reference to the <select> element that has all the meat options
 
+// ****** VARIABLES TO HOLD CHOSEN INGREDIENTS AND GET CHECKBOX DOM ELEMENTS ****** // 
 var meatChooser = document.getElementsByName("meat");
 var chosenMeat = [];
 
@@ -24,55 +20,41 @@ var chosenVeggies = [];
 var condimentChooser = document.getElementsByName("condiments");
 var chosenCondiments = [];
 
-function orderSandwich(event) {
-	
 
-	// clearInputs();
+// ****** MASTER FUNCTION TO TRIGGER GATHERING OF INGREDIENTS, PRICE CALC, AND PRINTING ****** // 
+function orderSandwich(event) {
 	deactivateOrder();
 	getMeats(event);
 	getBread(event);
 	getCheese(event);
 	getVeggies(event);
 	getCondiments(event);
-	// finalSandwichPrice = SandwichMaker.finalPrice().toFixed(2);
-	// console.log("finalSandwichPrice", finalSandwichPrice);
-	// ingredientsToString(selectedToppingsArray);
 	printSandwich(SandwichMaker.finalPrice().toFixed(2), ingredientsToString(selectedToppingsArray));
-
-
 	event.preventDefault();
-}
+};
 
+
+// ****** CONSTRUCT A STRING LISTING INGREDIENTS FOR PRINTING ****** // 
 function ingredientsToString(input) {
 	var ingredientList = "";
 	for (var i = 0; i < (input.length - 1); i++) {
 		ingredientList += input[i] + ", ";
 	}
 	ingredientList += "and " + input[input.length-1] + ".";
-
-	console.log("ingredientList", ingredientList);
 	return ingredientList;
-}
-
-function printSandwich(priceInput, ingredientInput) {
-
-	console.log("printSandwich called");
-
-
-	// document.getElementById("sandwich-details").innerHTML += `<h2>Test</h2>`;
-	// toPrint += `<h2>Test</h2>`;
-	document.getElementById("sandwich-details").innerHTML += `<p>The total price of your sandwich is $${priceInput}. Thanks for your order!</p>`
-
-	document.getElementById("sandwich-details").innerHTML += `<p>You ordered a sandwich with the following: ${ingredientInput}</p>`
-
-
-
 };
 
+
+// ****** PRINT SANDWICH PRICE AND SANDWICH INGREDIENTS TO DOM ****** // 
+function printSandwich(priceInput, ingredientInput) {
+	document.getElementById("sandwich-details").innerHTML += `<p>The total price of your sandwich is $${priceInput}. Thanks for your order!</p>`;
+	document.getElementById("sandwich-details").innerHTML += `<p>You ordered a sandwich with the following: ${ingredientInput}</p>`;
+};
+
+
+// ****** FUNCTION TO CLEAR VARIABLES AND CHECKBOXES IN PREP FOR NEW ORDER ****** // 
 function clearInputs() {
-	// finalSandwichPrice = 0;
 	selectedToppingsArray = [];
-	// ingredientList = "";
 	document.getElementById("sandwich-details").innerHTML = "";
 	SandwichMaker.clearPrice();
 	chosenMeat = [];
@@ -80,41 +62,35 @@ function clearInputs() {
 	chosenCheese = [];
 	chosenVeggies = [];
 	chosenCondiments = [];
-	// console.log("inputs:", document.getElementsByTagName("input"));
 	var inputsToClear = document.getElementsByTagName("input");
 	for (var i = 0; i < inputsToClear.length; i++) {
-		// console.log("inputs to clear:", inputsToClear[i]);
 		inputsToClear[i].checked = false;
-	}
+	};
 	activateOrder();
-
 };
 
+
+// ****** DEACTIVATE ORDER BUTTON ONCE PRESSED ****** // 
 function deactivateOrder() {
 	document.getElementById("order-btn").setAttribute('disabled', true);
-}
+};
 
+
+// ****** REACTIVATE ORDER BUTTON ONCE "NEW ORDER" BUTTON PRESSED ****** // 
 function activateOrder() {
 	document.getElementById("order-btn").removeAttribute('disabled', true);
-}
+};
 
+// ****** FUNCTIONS TO RETRIEVE CHECKBOX INFORMATION AND SEND TO INGREDIENT PRICING IIFES ****** // 
 function getMeats(event) {
-	var meatChooser = document.getElementsByName("meat");
-
-
+	meatChooser = document.getElementsByName("meat");
 	meatChooser.forEach(function (element) {
 		if (element.checked === true){
 			chosenMeat.push(element.id);
 			selectedToppingsArray.push(element.value);
 		};
 	});
-
-	console.log("meatChooser", meatChooser);
-	console.log("chosenMeat", chosenMeat);
-
 	SandwichMaker.addMeat(chosenMeat);
-	// chosenMeat = [];
-	console.log("chosenMeat after clear", chosenMeat);
 };
 
 function getBread(event) {
@@ -126,7 +102,6 @@ function getBread(event) {
 		}
 	});
 	SandwichMaker.addBread(chosenBread);
-	// chosenBread = [];
 };
 
 function getCheese(event) {
@@ -138,7 +113,6 @@ function getCheese(event) {
 		}
 	});
 	SandwichMaker.addCheese(chosenCheese);
-	// chosenCheese = [];
 };
 
 function getVeggies(event) {
@@ -150,7 +124,6 @@ function getVeggies(event) {
 		}
 	});
 	SandwichMaker.addVeggies(chosenVeggies);
-	// chosenVeggies = [];
 };
 
 function getCondiments(event) {
@@ -163,23 +136,3 @@ function getCondiments(event) {
 	});
 	SandwichMaker.addCondiments(chosenCondiments);
 };
-
-// function testSubmit(event) {
-// 	console.log("test submit");
-// 	meatChooser = document.getElementsByName("meat");
-// 	console.log("meatChooser", meatChooser);
-// 	event.preventDefault();
-// }
-
-/* 
-  A <select> element broadcasts a change event, so you listen for it
-  and get the value of the topping from your augmented IIFE
-// */
-// meatChooser.addEventListener("change", function(event) {
-//   // Get the value chosen from the DOM
-//   selectedTopping = event.target.value;
-
-  // Determine the price of the topping chosen
-
-  // Add the topping to the SandwichMaker to increase the total price
-// });
